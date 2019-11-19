@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-user-form',
@@ -9,20 +10,16 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
- 
+
   user: User;
- 
-  constructor(
-    private route: ActivatedRoute, 
-      private router: Router, 
-        private userService: UserService) {
-    this.user = new User();
-  }
- 
+
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) 
+    { this.user = new User(); }
+
   onSubmit() {
     this.userService.save(this.user).subscribe(result => this.gotoUserList());
   }
- 
+
   gotoUserList() {
     this.router.navigate(['/users']);
   }

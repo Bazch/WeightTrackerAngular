@@ -5,14 +5,16 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './user.service';
 import {FormsModule} from '@angular/forms';
-
+import { UserService } from './services/user.service';
+import { WeightListComponent } from './weight-list/weight-list.component';
+import { UserWeightService } from './services/user-weight.service';
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    WeightListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,7 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, UserWeightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

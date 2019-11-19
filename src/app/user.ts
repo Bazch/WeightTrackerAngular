@@ -1,5 +1,7 @@
+import { UserWeight } from './user-weight';
+
 export class User {
-    id: string;
-    name: string
+    name: string;
     email: string;
+    weights: UserWeight[];
 }
