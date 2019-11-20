@@ -19,7 +19,7 @@
                 required
                 [(ngModel)]="userweight.user" name="user"
                 #user="ngModel">
-          <option *ngFor="let user of users" [value]="user">{{user.name}}</option>
+          <option *ngFor="let user of users" [value]="this.user">{{user.name}}</option>
         </select>
         <div [hidden]="!user.pristine" class="alert alert-danger">
           Name is required

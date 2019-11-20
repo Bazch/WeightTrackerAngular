@@ -13,13 +13,15 @@ import { UserService } from '../services/user.service';
 export class WeightListComponent{
 
   userweight: UserWeight;
-  users: User[]
+  users: User[];
+ 
+  usersStr = JSON.stringify(this.users);
 
   constructor(private route: ActivatedRoute, private router: Router, private userWeightService: UserWeightService, private userService: UserService) 
     { this.userweight = new UserWeight(); }
 
   onSubmit() {
-    this.userWeightService.save(this.userweight).subscribe(result => this.gotoUserList());
+    this.userWeightService.save(this.userweight).subscribe(result => this.gotoWeightList());
   }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class WeightListComponent{
       () => console.log("Gereed"))
     }
 
-  gotoUserList() {
+  gotoWeightList() {
     this.router.navigate(['/weights']);
   }
 
