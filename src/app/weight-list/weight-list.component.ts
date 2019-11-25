@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserWeightService } from '../services/user-weight.service';
 import { User } from '../user';
 import { UserService } from '../services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-weight-list',
@@ -14,14 +15,20 @@ export class WeightListComponent{
 
   userweight: UserWeight;
   users: User[];
- 
-  usersStr = JSON.stringify(this.users);
+  userweightUser: User;
+  userweightValue: number;
+
 
   constructor(private route: ActivatedRoute, private router: Router, private userWeightService: UserWeightService, private userService: UserService) 
-    { this.userweight = new UserWeight(); }
+    {}
 
   onSubmit() {
-    this.userWeightService.save(this.userweight).subscribe(result => this.gotoWeightList());
+    var userWeight: UserWeight = new UserWeight(this.userweightValue, this.userweightUser)
+    this.userWeightService.save(userWeight).subscribe(
+      (userWeight: UserWeight) =>{},
+        (error: HttpErrorResponse) => alert("Er is een fout opgetreden: " + error.status + " " + error.error + "\n" + "\nMessage:\n" + error.message),
+        () => {this.gotoWeightList();}
+      )
   }
 
   ngOnInit() {
@@ -34,5 +41,7 @@ export class WeightListComponent{
   gotoWeightList() {
     this.router.navigate(['/weights']);
   }
-
+ 
+ 
+  get diagnostic() { return JSON.stringify(this.userweight); }
 }

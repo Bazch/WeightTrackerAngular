@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../user';
+import { environment } from 'src/environments/environment';
 
  
 @Injectable()
 export class UserService {
  
-  private usersUrl: string;
  
-  constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
-  }
+  httpOptions = { headers: new HttpHeaders({ 'Content-type': 'application/json' }) }
+
+  constructor(private http:HttpClient) { }
  
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+    return this.http.get<User[]>(`${environment.myUrl}users`);
   }
  
   public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(`${environment.myUrl}users`, user);
+  }
+
+  public findByName(name: string):Observable<User[]>{
+    return this.http.get<User[]>(`${environment.myUrl}users/name/${name}`);
   }
 }

@@ -1,0 +1,23 @@
+<h1>Weights</h1>
+<br>
+Search for Users
+<br>    
+<input type="text" [(ngModel)]='name' placeholder="Search User">
+<button (click)="findByName()">Search</button>
+<br>
+<br>
+<table border="1">
+    <tr >
+        <th>Name</th>
+        <th>Weight</th>
+        <th>Date</th>
+    </tr>
+    <tr *ngFor="let userweight of userweights">
+        <td>{{userweight.user.name}}</td>
+        <td>{{userweight.value}}</td>
+        <td>{{userweight.date}}</td>
+    </tr>
+</table>
+<br>
+
+<router-outlet></router-outlet>

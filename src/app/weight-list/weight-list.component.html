@@ -6,7 +6,7 @@
         <label for="name">Weight</label>
         <input type="number" class="form-control" id="value"
                required
-               [(ngModel)]="userweight.value" name="value"
+               [(ngModel)]="userweightValue" name="value"
                #value="ngModel">
         <div [hidden]="!value.pristine"
              class="alert alert-danger">
@@ -17,9 +17,9 @@
         <label for="user">Your Name</label>
         <select type = "user" class="form-control" id="user"
                 required
-                [(ngModel)]="userweight.user" name="user"
+                [(ngModel)]="userweightUser" name="user"
                 #user="ngModel">
-          <option *ngFor="let user of users" [value]="this.user">{{user.name}}</option>
+          <option *ngFor="let user of users" [ngValue]="user">{{user.name}}</option>
         </select>
         <div [hidden]="!user.pristine" class="alert alert-danger">
           Name is required

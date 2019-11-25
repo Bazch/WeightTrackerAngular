@@ -9,12 +9,14 @@ import {FormsModule} from '@angular/forms';
 import { UserService } from './services/user.service';
 import { WeightListComponent } from './weight-list/weight-list.component';
 import { UserWeightService } from './services/user-weight.service';
+import { UserweightListComponent } from './userweight-list/userweight-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     UserFormComponent,
-    WeightListComponent
+    WeightListComponent,
+    UserweightListComponent
   ],
   imports: [
     BrowserModule,
