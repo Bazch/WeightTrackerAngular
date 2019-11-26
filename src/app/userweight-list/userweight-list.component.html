@@ -1,9 +1,12 @@
 <h1>Weights</h1>
-<br>
-Search for Users
-<br>    
-<input type="text" [(ngModel)]='name' placeholder="Search User">
-<button (click)="findByName()">Search</button>
+
+<div class="form-group">
+<div style="float:left;margin-right:20px;">
+<label for="name">Search User</label>   
+<input type="text" [(ngModel)]="name" placeholder="Search User">
+<button class="btn btn-info" (click)="findByName()" style = "position:relative; left:10px;">Search</button>
+</div>
+</div>
 <br>
 <div class="card my-5">
         <div class="card-body">
