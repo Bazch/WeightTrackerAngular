@@ -5,19 +5,28 @@ Search for Users
 <input type="text" [(ngModel)]='name' placeholder="Search User">
 <button (click)="findByName()">Search</button>
 <br>
-<br>
-<table border="1">
-    <tr >
-        <th>Name</th>
-        <th>Weight</th>
-        <th>Date</th>
-    </tr>
-    <tr *ngFor="let userweight of userweights">
-        <td>{{userweight.user.name}}</td>
-        <td>{{userweight.value}}</td>
-        <td>{{userweight.date}}</td>
-    </tr>
-</table>
+<div class="card my-5">
+        <div class="card-body">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Date</th>
+                <th scope="col">BMI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let userweight of userweights">
+                <td>{{ userweight.user.name }}</td>
+                <td>{{ userweight.value}}</td>
+                <td>{{ userweight.date }}</td>
+                <td>{{ userweight.bmi }} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 <br>
 
 <router-outlet></router-outlet>

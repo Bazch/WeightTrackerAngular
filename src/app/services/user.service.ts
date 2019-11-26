@@ -11,7 +11,7 @@ export class UserService {
  
   httpOptions = { headers: new HttpHeaders({ 'Content-type': 'application/json' }) }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
  
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.myUrl}users`);

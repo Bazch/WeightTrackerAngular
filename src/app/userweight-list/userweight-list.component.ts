@@ -31,8 +31,4 @@ findByName(){
     )
 }
 
-gotoWeightList() {
-  this.router.navigate(['/weights']);
-}
-
 }

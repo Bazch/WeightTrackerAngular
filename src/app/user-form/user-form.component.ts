@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import {MatRadioModule} from '@angular/material/radio'; 
 
 
 @Component({
@@ -12,6 +13,7 @@ import { UserService } from '../services/user.service';
 export class UserFormComponent {
 
   user: User;
+  sexArray: string[] = ['M', 'V'];
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) 
     { this.user = new User(); }

@@ -10,6 +10,11 @@ import { UserService } from './services/user.service';
 import { WeightListComponent } from './weight-list/weight-list.component';
 import { UserWeightService } from './services/user-weight.service';
 import { UserweightListComponent } from './userweight-list/userweight-list.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +25,13 @@ import { UserweightListComponent } from './userweight-list/userweight-list.compo
   ],
   imports: [
     BrowserModule,
+    MatRadioModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [UserService, UserWeightService],
+  providers: [UserService, UserWeightService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
