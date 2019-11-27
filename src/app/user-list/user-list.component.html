@@ -9,6 +9,7 @@
             <th scope="col">Email</th>
             <th scope="col">Length</th>
             <th scope="col">Sex</th>
+            <th scope="col>"></th>
           </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
             <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
             <td>{{ user.length }}</td>
             <td>{{ user.sex}} </td>
+            <td><button class="smallFont" style = "position:relative; left:50px;"(click)="deleteUser(user.id)">Delete</button></td>
           </tr>
         </tbody>
       </table>

@@ -23,8 +23,4 @@ export class UserWeightService {
     return this.http.post<UserWeight>(`${environment.myUrl}weights`, userWeight);
   }
 
-  public findByUserName(name: string): Observable<UserWeight[]>{
-    return this.http.get<UserWeight[]>(`${environment.myUrl}users/${name}/weights`);
-  }
-
 }

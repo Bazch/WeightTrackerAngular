@@ -15,6 +15,8 @@ export class UserweightListComponent implements OnInit {
 
   userweights: UserWeight[];
   name: string;
+  test: number;
+  user: User;
 
   constructor(private userService: UserService, private userWeightService: UserWeightService, private router: Router) { }
 
@@ -23,12 +25,11 @@ export class UserweightListComponent implements OnInit {
 
 findByName(){
   var name = encodeURI(this.name);
-    console.log(name);
-    this.userWeightService.findByUserName(name).subscribe(
-      (userweights: UserWeight[]) => this.userweights = userweights,
-      (error: HttpErrorResponse) => alert("Er is een fout opgetreden: " + error.status + " " + error.error + "\n" + "\nMessage:\n" + error.message),
-      () => {} 
-    )
+  this.userService.findByName(name).subscribe(
+  (user: User[]) => (this.userweights = user[0].userWeights, this.user = user[0]),
+  (error: any) => (console.log(error)),
+  () => {}
+  )
 }
 
 }

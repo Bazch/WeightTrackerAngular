@@ -5,6 +5,7 @@
 <label for="name">Search User</label>   
 <input type="text" [(ngModel)]="name" placeholder="Search User">
 <button class="btn btn-info" (click)="findByName()" style = "position:relative; left:10px;">Search</button>
+
 </div>
 </div>
 <br>
@@ -20,11 +21,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let userweight of userweights">
-                <td>{{ userweight.user.name }}</td>
-                <td>{{ userweight.value}}</td>
-                <td>{{ userweight.date }}</td>
-                <td>{{ userweight.bmi }} </td>
+              <tr *ngFor="let u of userweights">
+                <td>{{user.name}}</td>
+                <td>{{ u.value}}</td>
+                <td>{{ u.date }}</td>
+                <td>{{ u.bmi }} </td>
               </tr>
             </tbody>
           </table>

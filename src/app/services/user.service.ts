@@ -24,4 +24,8 @@ export class UserService {
   public findByName(name: string):Observable<User[]>{
     return this.http.get<User[]>(`${environment.myUrl}users/name/${name}`);
   }
+
+  public delete(userId:number):Observable<{}> {
+    return this.http.delete(`${environment.myUrl}users/${userId}`, this.httpOptions);
+  }
 }

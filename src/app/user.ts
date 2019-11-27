@@ -6,4 +6,6 @@ export class User {
     email: string;
     sex: string;
     length: number;
+    userWeights: UserWeight[];
+
 }
