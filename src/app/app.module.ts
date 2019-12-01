@@ -12,7 +12,9 @@ import { UserWeightService } from './services/user-weight.service';
 import { UserweightListComponent } from './userweight-list/userweight-list.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { HighchartComponent } from './highchart/highchart.component';
 
 
 @NgModule({
@@ -21,10 +23,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserListComponent,
     UserFormComponent,
     WeightListComponent,
-    UserweightListComponent
+    UserweightListComponent,
+    HighchartComponent
   ],
   imports: [
     BrowserModule,
+    HighchartsChartModule,
+    ChartModule,
     MatRadioModule,
     AppRoutingModule,
     HttpClientModule,

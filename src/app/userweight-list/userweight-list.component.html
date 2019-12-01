@@ -5,6 +5,23 @@
 <label for="name">Search User</label>   
 <input type="text" [(ngModel)]="name" placeholder="Search User">
 <button class="btn btn-info" (click)="findByName()" style = "position:relative; left:10px;">Search</button>
+<button class="btn btn-info" (click)="updateChart()" style = "position:relative; left:10px;">Create Graph</button>
+<button class="btn btn-info" (click)="deleteChart()" style = "position:relative; left:10px;">Delete Graph</button>
+
+<highcharts-chart 
+  id="container"
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  [constructorType]="chartConstructor"
+  [callbackFunction]="chartCallback"
+
+  [(update)]="updateFlag"
+  [oneToOne]="oneToOneFlag"
+  [runOutsideAngular]="runOutsideAngularFlag"
+
+  style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>
+
 
 </div>
 </div>
