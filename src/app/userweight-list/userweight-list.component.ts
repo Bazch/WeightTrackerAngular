@@ -35,9 +35,10 @@ export class UserweightListComponent implements OnInit, OnDestroy{
         text: "Date"
       },
       type: 'datetime',
-      dateTimeLabelFormats: { // don't display the dummy year
-          month: '%e. %b',
-          year: '%b'
+      dateTimeLabelFormats: {
+        day: '%e. %b',
+        month: '%b \'%y',
+        year: '%Y'
     }
   },
     series: [{
