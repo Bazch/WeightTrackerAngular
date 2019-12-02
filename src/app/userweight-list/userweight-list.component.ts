@@ -33,9 +33,13 @@ export class UserweightListComponent implements OnInit, OnDestroy{
       allowDecimals: false,
       title: {
         text: "Date"
-      }
-
-    },
+      },
+      type: 'datetime',
+      dateTimeLabelFormats: { // don't display the dummy year
+          month: '%e. %b',
+          year: '%b'
+    }
+  },
     series: [{
       data: [],
       type: 'line',
@@ -83,13 +87,20 @@ export class UserweightListComponent implements OnInit, OnDestroy{
   updateChart(){
     const dataArray = [];
     for (let i in this.userWeightValues) {
-      dataArray.push([this.userWeightDates[i], this.userWeightValues[i]]);
+      var dt = new Date(this.userWeightDates[i])
+      var year = dt.getFullYear();
+      var month = dt.getMonth();
+      var day = dt.getDate();
+     
+      
+      dataArray.push([Date.UTC(year, month, day), this.userWeightValues[i]]);
     }
-    console.log(dataArray);
+   
     this.chartOptions.title.text = this.userName;
     this.chartOptions.series[0]['data'] = dataArray;
     this.chartOptions.series[0]['name'] = 'Weight';
     this.chart = Highcharts.chart('container', this.chartOptions);
+   
   }
 }
 
