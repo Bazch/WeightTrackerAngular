@@ -9,6 +9,7 @@ import { Chart, Options } from 'highcharts';
 import { first } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as Highcharts from 'highcharts';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-userweight-list',
@@ -17,15 +18,11 @@ import * as Highcharts from 'highcharts';
 })
 export class UserweightListComponent implements OnInit, OnDestroy{
  
-  userweights: UserWeight[];
-  name: string;
-  test: number;
-  user: User;
-  userWeightValues: number[];
- 
-  Highcharts: typeof Highcharts = Highcharts;
   chart: Highcharts.Chart;
   chartOptions: Highcharts.Options = {
+    title: {
+      text: "Progress Graph"
+    },
     yAxis: {
       allowDecimals: true,
       title: {
@@ -37,20 +34,34 @@ export class UserweightListComponent implements OnInit, OnDestroy{
       title: {
         text: "Date"
       }
+
     },
     series: [{
       data: [],
-      type: 'line'
+      type: 'line',
+      name: ""
     }]
   };
+
+  name: string;
+  
+  user: User;
+  userweights: UserWeight[];
+  
+  userName: string;
+  userWeightValues: number[];
+  userWeightDates: Date[];
+  
+ 
+  
 
   constructor(private userService: UserService, private userWeightService: UserWeightService, private router: Router) { }
 
   ngOnInit() {  
+    this.chart = Highcharts.chart("container", this.chartOptions);
   }
   
   ngOnDestroy(){
-    // this.chart.destroy();
   }
 
   findByName(){
@@ -59,7 +70,10 @@ export class UserweightListComponent implements OnInit, OnDestroy{
       (user: User[]) => (
         this.userweights = user[0].userWeights, 
         this.user = user[0],
-        this.userWeightValues = user[0].userWeights.map(u => u.value)
+        this.userWeightValues = user[0].userWeights.map(u => u.value),
+        this.userWeightDates = user[0].userWeights.map(u => u.date),
+        this.userName = user[0].name,        
+        this.updateChart()
       ),
       (error: any) => (console.log(error)),
       () => {}
@@ -67,13 +81,15 @@ export class UserweightListComponent implements OnInit, OnDestroy{
   }
 
   updateChart(){
-    this.chartOptions.series[0]['data'] = this.userWeightValues,
+    const dataArray = [];
+    for (let i in this.userWeightValues) {
+      dataArray.push([this.userWeightDates[i], this.userWeightValues[i]]);
+    }
+    console.log(dataArray);
+    this.chartOptions.title.text = this.userName;
+    this.chartOptions.series[0]['data'] = dataArray;
+    this.chartOptions.series[0]['name'] = 'Weight';
     this.chart = Highcharts.chart('container', this.chartOptions);
-  }
-
-  deleteChart(){
-    this.chart.destroy();
-
   }
 }
 
