@@ -1,5 +1,4 @@
 <div class="container">
-  <div [hidden]="submitted">
     <h1>Enter Your Weight</h1>
 
     <form (ngSubmit)="onSubmit()" #weightForm="ngForm">
@@ -34,5 +33,4 @@
       <button type="submit" [disabled]="!weightForm.form.valid" 
           class="btn btn-info">Submit</button>
       </form>
-    </div>
-  </div>
+</div>

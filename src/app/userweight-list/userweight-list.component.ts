@@ -101,7 +101,6 @@ export class UserweightListComponent implements OnInit, OnDestroy{
     this.chartOptions.series[0]['data'] = dataArray;
     this.chartOptions.series[0]['name'] = 'Weight';
     this.chart = Highcharts.chart('container', this.chartOptions);
-   
   }
 }
 
