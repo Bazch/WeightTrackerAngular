@@ -102,6 +102,16 @@ export class UserweightListComponent implements OnInit, OnDestroy{
     this.chartOptions.series[0]['name'] = 'Weight';
     this.chart = Highcharts.chart('container', this.chartOptions);
   }
+  
+  deleteUserWeight(userWeightId:number) {
+    this.userWeightService.delete(userWeightId).subscribe(
+      (result: any) => this.findByName(),
+      (error: any) => console.log(error),
+      () => { }
+    )
+  }
+
+
 }
 
 

@@ -23,4 +23,7 @@ export class UserWeightService {
     return this.http.post<UserWeight>(`${environment.myUrl}weights`, userWeight);
   }
 
+  public delete(userWeightId:number):Observable<{}> {
+    return this.http.delete(`${environment.myUrl}weights/${userWeightId}`, this.httpOptions);
+  }
 }
