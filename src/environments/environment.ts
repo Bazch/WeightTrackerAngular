@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  myUrl: 'https://gb-weighttracker.herokuapp.com/'
+  myUrl: 'http://localhost:8080/'
 };
 
 /*
