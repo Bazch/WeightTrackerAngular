@@ -3,6 +3,7 @@
 <div class="container-fluid">
 <div class="card my-5">
     <div class="card-body">
+        <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
@@ -19,10 +20,11 @@
             <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
             <td>{{ user.length }}</td>
             <td>{{ user.sex}} </td>
-            <td><button class="smallFont" style = "position:relative; left:50px;"(click)="deleteUser(user.id)">Delete</button></td>
+            <td style= "text-align: center"><button class="smallFont" (click)="deleteUser(user.id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>

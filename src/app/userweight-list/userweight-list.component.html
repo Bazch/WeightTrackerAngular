@@ -19,6 +19,7 @@
               ></highcharts-chart>
             </div>
             <div class="col-sm">
+                <div class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead class="thead-dark">
               <tr>
@@ -35,10 +36,11 @@
                 <td>{{ u.value}}</td>
                 <td>{{ u.date }}</td>
                 <td>{{ u.bmi }} </td>
-                <td><button class="smallFont" style = "position:relative; left:15px;"(click)="deleteUserWeight(u.id)">Delete</button></td>
+                <td style= "text-align: center"><button class="smallFont" (click)="deleteUserWeight(u.id)">Delete</button></td>
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
  </div>
