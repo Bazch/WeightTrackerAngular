@@ -41,18 +41,7 @@ export class UserweightListComponent implements OnInit, OnDestroy{
         year: '%Y'
     }
   },
-  responsive: {  
-    rules: [{  
-      condition: {  
-        maxWidth: 500  
-      },  
-      chartOptions: {  
-        legend: {  
-          enabled: false  
-        }  
-      }  
-    }]  
-  },
+  
     series: [{
       data: [],
       type: 'line',
