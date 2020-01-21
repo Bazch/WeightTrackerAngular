@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { WeightListComponent } from './weight-list/weight-list.component';
 import { UserWeightService } from './services/user-weight.service';
@@ -15,6 +15,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'angular-highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HighchartComponent } from './highchart/highchart.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './login/auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { CVComponent } from './cv/cv.component';
+import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 
 
 @NgModule({
@@ -24,7 +31,9 @@ import { HighchartComponent } from './highchart/highchart.component';
     UserFormComponent,
     WeightListComponent,
     UserweightListComponent,
-    HighchartComponent
+    HighchartComponent,
+    LoginComponent,
+    CVComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +43,15 @@ import { HighchartComponent } from './highchart/highchart.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule,
+    MDBBootstrapModule.forRoot(),
+    NgxExtendedPdfViewerModule
   ],
-  providers: [UserService, UserWeightService,],
+  providers: [UserService, UserWeightService, AuthenticationService, BasicAuthInterceptorService,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthInterceptorService,
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
