@@ -25,6 +25,10 @@ export class UserService {
     return this.http.get<User[]>(`${environment.myUrl}users/name/${name}`);
   }
 
+  public isEmailTaken(email: string):Observable<boolean>{   
+    return this.http.get<boolean>(`${environment.myUrl}users/email/${email}`);
+  }
+
   public delete(userId:number):Observable<{}> {
     return this.http.delete(`${environment.myUrl}users/${userId}`, this.httpOptions);
   }

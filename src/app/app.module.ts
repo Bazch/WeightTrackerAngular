@@ -22,7 +22,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { CVComponent } from './cv/cv.component';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
-
+import { LogoutComponent } from './logout/logout.component';
+import { RefreshComponent } from './refresh/refresh.component';
+import { ExistingEmailValidator } from './custom-validators/existing-email-validator';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,11 @@ import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.s
     UserweightListComponent,
     HighchartComponent,
     LoginComponent,
-    CVComponent
+    CVComponent,
+    LogoutComponent,
+    RefreshComponent,
+    ExistingEmailValidator
+    
   ],
   imports: [
     BrowserModule,
