@@ -1,11 +1,75 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="card bg-dark my-5">
-        <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
+
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary" [containerInside]="false">
+
+  <mdb-navbar-brand><a class="navbar-brand" href="#">{{title}}</a></mdb-navbar-brand>
+
+  <links>
+
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="!isLoggedIn" class="nav-item">
+         <a class="nav-link" routerLink='login'>Log in</a>
+
+      </li>
+      <li class="nav-item">
+        <a *ngIf="!isLoggedIn" class="nav-link" routerLink='adduser'>Register
+          </a>
+      </li>
+      
+      <li class="nav-item dropdown" dropdown>
+        <a *ngIf="isLoggedIn" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Actions<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink='addweight'>Add Weight</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink='weights'>View Progress</a>
+        </div>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+    
+      <li class="nav-item dropdown" dropdown>
+        <a *ngIf="isLoggedIn" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="/login" (click)=handleLogout()>Log out</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <mdb-icon far icon="address-card" ngbTooltip="More information about the author (Dutch)" routerLink='cv'></mdb-icon></a>
+      </li>
+    </ul>
+  
+  </links>
+
+</mdb-navbar>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['users']">List Users</a>
+          <a class="dropdown-item" [routerLink]="['adduser']">Add User</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['addweight']">Add Weight</a>
+          <a class="dropdown-item" [routerLink]="['weights']">List Weights</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+            <!-- <li class="list-inline-item">
               <a routerLink="users" class="btn btn-info btn-responsive">List Users</a>
                 </li>
             <li class="list-inline-item">
@@ -19,8 +83,8 @@
                 </li>
           </ul>
         </div>
-      </div>   
-     <router-outlet></router-outlet>         
-    </div>
+      </div>    -->
+     <router-outlet></router-outlet>     
+    </div>    
   </div>
 </div>
