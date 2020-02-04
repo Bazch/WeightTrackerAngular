@@ -7,7 +7,7 @@ import { UserweightListComponent } from './userweight-list/userweight-list.compo
 import { LoginComponent } from './login/login.component';
 import { CVComponent } from './cv/cv.component';
 import { LogoutComponent } from './logout/logout.component';
-import { RefreshComponent } from './refresh/refresh.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'cv', component: CVComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'home', component: RefreshComponent},
+  { path: 'home', component: HomeComponent},
 ];
 
 @NgModule({

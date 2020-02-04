@@ -20,7 +20,8 @@ export class AppComponent {
   ngOnInit() {
     location.reload;
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
-    console.log('Logged in ' + this.isLoggedIn + " " + 'User: ' + sessionStorage.getItem(this.authenticationService.USER_NAME_SESSION_ATTRIBUTE_NAME));
+    console.log('Logged in: ' + this.isLoggedIn + "  " + 'User: ' + sessionStorage.getItem('username'));
+    console.log('token: '+ sessionStorage.getItem('basicauth'));
   }
   handleLogout(){
     this.authenticationService.logout();

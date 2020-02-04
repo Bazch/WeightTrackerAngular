@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     window.location.reload(); 
   }
   handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
+    this.authenticationService.authenticate(this.username, this.password).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this.successMessage = 'Login Successful.';
