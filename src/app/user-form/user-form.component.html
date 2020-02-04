@@ -5,6 +5,30 @@
       <form (ngSubmit)="onSubmit()" #userForm="ngForm">
 
         <div class="form-group">
+          <label for="name">Username</label>
+          <input type="text" [(ngModel)]="user.username" 
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required 
+            #username="ngModel">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">Username is required</div>
+        </div>    
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input type="password" [(ngModel)]="user.password" 
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Enter a password"
+            required 
+            #password="ngModel">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Password is required</div>
+        </div>    
+
+        <div class="form-group">
           <label for="name">Name</label>
           <input type="text" [(ngModel)]="user.name" 
             class="form-control"
@@ -34,7 +58,6 @@
             
         </div>
        
-
           <div class="form-group">
               <label for="sex">Sex</label>
               <mat-radio-group
