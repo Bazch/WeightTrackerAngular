@@ -14,22 +14,25 @@ export class UserService {
   constructor(private http: HttpClient) { }
  
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.myUrl}/api/v1/users`);
+    return this.http.get<User[]>(`${environment.myUrl}api/v1/users`);
   }
  
   public save(user: User) {
-    return this.http.post<User>(`${environment.myUrl}/register`, user);
+    return this.http.post<User>(`${environment.myUrl}register`, user);
   }
 
   public findByName(name: string):Observable<User[]>{
-    return this.http.get<User[]>(`${environment.myUrl}/api/v1/users/name/${name}`);
+    return this.http.get<User[]>(`${environment.myUrl}api/v1/users/name/${name}`);
+  }
+  public findByUsername(username: string):Observable<User>{
+    return this.http.get<User>(`${environment.myUrl}api/v1/users/username/${username}`);
   }
 
   public isEmailTaken(email: string):Observable<boolean>{   
-    return this.http.get<boolean>(`${environment.myUrl}/api/v1/users/email/${email}`);
+    return this.http.get<boolean>(`${environment.myUrl}api/v1/users/email/${email}`);
   }
 
   public delete(userId:number):Observable<{}> {
-    return this.http.delete(`${environment.myUrl}/api/v1/users/${userId}`, this.httpOptions);
+    return this.http.delete(`${environment.myUrl}api/v1/users/${userId}`, this.httpOptions);
   }
 }

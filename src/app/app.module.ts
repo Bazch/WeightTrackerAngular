@@ -10,8 +10,6 @@ import { UserService } from './services/user.service';
 import { WeightListComponent } from './weight-list/weight-list.component';
 import { UserWeightService } from './services/user-weight.service';
 import { UserweightListComponent } from './userweight-list/userweight-list.component';
-import { MatRadioModule } from '@angular/material/radio';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'angular-highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HighchartComponent } from './highchart/highchart.component';
@@ -23,8 +21,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { CVComponent } from './cv/cv.component';
 import { BasicAuthInterceptorService } from './services/basic-auth-interceptor.service';
 import { LogoutComponent } from './logout/logout.component';
-import { HomeComponent } from './home/home.component';
 import { ExistingEmailValidator } from './custom-validators/existing-email-validator';
+import { MaterialModule } from './material.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,12 +43,11 @@ import { ExistingEmailValidator } from './custom-validators/existing-email-valid
   imports: [
     BrowserModule,
     HighchartsChartModule,
+    MaterialModule,
     ChartModule,
-    MatRadioModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     NgbModule,
     MDBBootstrapModule.forRoot(),
     NgxExtendedPdfViewerModule

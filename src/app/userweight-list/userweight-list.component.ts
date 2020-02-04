@@ -10,6 +10,7 @@ import { first } from 'rxjs/operators';
 import * as _ from 'lodash';
 import * as Highcharts from 'highcharts';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'app-userweight-list',
@@ -52,6 +53,7 @@ export class UserweightListComponent implements OnInit, OnDestroy{
   name: string;
   
   user: User;
+  users: User[];
   userweights: UserWeight[];
   
   userName: string;
@@ -61,44 +63,50 @@ export class UserweightListComponent implements OnInit, OnDestroy{
  
   
 
-  constructor(private userService: UserService, private userWeightService: UserWeightService, private router: Router) { }
+  constructor(private userService: UserService, private userWeightService: UserWeightService, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {  
     this.chart = Highcharts.chart("container", this.chartOptions);
+    this.userName = this.authenticationService.getLoggedInUserName()
+    this.findByUsername();
   }
   
   ngOnDestroy(){
   }
 
-  findByName(){
-    var name = encodeURI(this.name);
-    this.userService.findByName(name).subscribe(
-      (user: User[]) => (
-        this.userweights = user[0].userWeights, 
-        this.user = user[0],
-        this.userWeightValues = user[0].userWeights.map(u => u.value),
-        this.userWeightDates = user[0].userWeights.map(u => u.date),
-        this.userName = user[0].name,        
+  findByUsername(){
+    this.userService.findByUsername(this.userName).subscribe(
+      (user: User) => (
+        this.userweights = user.userWeights, 
+        console.log(this.userweights),
+        this.sortDataByDate(this.userweights),
+        this.user = user,
+        this.userWeightValues = user.userWeights.map(u => u.value),
+        this.userWeightDates = user.userWeights.map(u => u.date),
         this.updateChart()
       ),
       (error: any) => (console.log(error)),
       () => {}
     )
   }
-
+  sortDataByDate(data) {
+    return data.sort((a, b) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  }
   updateChart(){
     const dataArray = [];
     for (let i in this.userWeightValues) {
       var dt = new Date(this.userWeightDates[i])
       var year = dt.getFullYear();
       var month = dt.getMonth();
-      var day = dt.getDate();
-     
+      var day = dt.getDate(); 
       
       dataArray.push([Date.UTC(year, month, day), this.userWeightValues[i]]);
+     
     }
-   
-    this.chartOptions.title.text = this.userName;
+    
+    this.chartOptions.title.text = this.user.name;
     this.chartOptions.series[0]['data'] = dataArray;
     this.chartOptions.series[0]['name'] = 'Weight';
     this.chart = Highcharts.chart('container', this.chartOptions);
@@ -106,7 +114,7 @@ export class UserweightListComponent implements OnInit, OnDestroy{
   
   deleteUserWeight(userWeightId:number) {
     this.userWeightService.delete(userWeightId).subscribe(
-      (result: any) => this.findByName(),
+      (result: any) => this.findByUsername(),
       (error: any) => console.log(error),
       () => { }
     )

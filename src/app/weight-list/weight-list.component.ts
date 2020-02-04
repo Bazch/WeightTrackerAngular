@@ -5,6 +5,7 @@ import { UserWeightService } from '../services/user-weight.service';
 import { User } from '../user';
 import { UserService } from '../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'app-weight-list',
@@ -13,17 +14,22 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class WeightListComponent{
 
+  userDate: Date;
   userweight: UserWeight;
-  users: User[];
-  userweightUser: User;
+  user: User;
   userweightValue: number;
+  userName: string;
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private userWeightService: UserWeightService, private userService: UserService) 
+
+  constructor(private route: ActivatedRoute, private router: Router, private userWeightService: UserWeightService, private authenticationService: AuthenticationService, private userService: UserService) 
     {}
 
   onSubmit() {
-    var userWeight: UserWeight = new UserWeight(this.userweightValue, this.userweightUser)
+    console.log(this.userDate);
+    this.userDate.setDate(this.userDate.getDate() +1);
+    console.log(this.userDate);
+    var userWeight: UserWeight = new UserWeight(this.userweightValue, this.user, this.userDate)
     this.userWeightService.save(userWeight).subscribe(
       (userWeight: UserWeight) =>{},
         (error: HttpErrorResponse) => alert("Er is een fout opgetreden: " + error.status + " " + error.error + "\n" + "\nMessage:\n" + error.message),
@@ -32,11 +38,19 @@ export class WeightListComponent{
   }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(
-      (data: any) => this.users = data, 
-      (error: any) => console.log(error), 
-      () => console.log("Gereed"))
-    }
+    this.userName = this.authenticationService.getLoggedInUserName();
+    this.findByUsername();
+  }
+
+findByUsername(){
+    this.userService.findByUsername(this.userName).subscribe(
+      (user: User) => (
+        this.user = user
+      ),
+      (error: any) => (console.log(error)),
+      () => {}
+    )
+  }
 
   gotoWeightList() {
     this.router.navigate(['/weights']);

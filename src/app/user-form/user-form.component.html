@@ -49,10 +49,10 @@
             id="email"
             name="email"
             placeholder="Enter your email address"
-            required ExistingEmailValidator
+            required
             #email="ngModel">
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-              <div *ngIf="email.errors.isEmailTaken" >Email already exists.</div>
+              <!-- <div *ngIf="email.errors.isEmailTaken" >Email already exists.</div> -->
               <div *ngIf="email.errors.required">Email is required</div>
             </div>
             

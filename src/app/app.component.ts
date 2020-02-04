@@ -21,7 +21,7 @@ export class AppComponent {
     location.reload;
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
     console.log('Logged in: ' + this.isLoggedIn + "  " + 'User: ' + sessionStorage.getItem('username'));
-    console.log('token: '+ sessionStorage.getItem('basicauth'));
+    console.log('token: '+ sessionStorage.getItem('token'));
   }
   handleLogout(){
     this.authenticationService.logout();

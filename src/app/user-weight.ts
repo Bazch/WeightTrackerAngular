@@ -7,11 +7,9 @@ export class UserWeight {
     public date: Date;
     public bmi: number;
     
-    constructor(value: number, user: User) {
+    constructor(value: number, user: User, date: Date) {
     this.value = value;
     this.user = user;       
-    
-
-
-}
+    this.date = date;
+    }
 }
