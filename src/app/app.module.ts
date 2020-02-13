@@ -24,6 +24,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ExistingEmailValidator } from './custom-validators/existing-email-validator';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
+import { ExistingUsernameValidator } from './custom-validators/existing-username-validator';
+import { NoAuthGuardService } from './services/no-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { HomeComponent } from './home/home.component';
     CVComponent,
     LogoutComponent,
     HomeComponent,
-    ExistingEmailValidator
+    ExistingEmailValidator,
+    ExistingUsernameValidator
     
   ],
   imports: [
@@ -52,7 +55,7 @@ import { HomeComponent } from './home/home.component';
     MDBBootstrapModule.forRoot(),
     NgxExtendedPdfViewerModule
   ],
-  providers: [UserService, UserWeightService, AuthenticationService, BasicAuthInterceptorService,
+  providers: [UserService, UserWeightService, AuthenticationService, BasicAuthInterceptorService, NoAuthGuardService,
     {provide: HTTP_INTERCEPTORS,
     useClass: BasicAuthInterceptorService,
     multi: true}],

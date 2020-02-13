@@ -29,7 +29,11 @@ export class UserService {
   }
 
   public isEmailTaken(email: string):Observable<boolean>{   
-    return this.http.get<boolean>(`${environment.myUrl}api/v1/users/email/${email}`);
+    return this.http.get<boolean>(`${environment.myUrl}register/email/${email}`);
+  }
+
+  public isUsernameTaken(username: string):Observable<boolean>{   
+    return this.http.get<boolean>(`${environment.myUrl}register/username/${username}`);
   }
 
   public delete(userId:number):Observable<{}> {
