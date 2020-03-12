@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { NoAuthGuardService as AuthGuard} from './services/no-auth-guard.service';
 import { UserLiftsComponent } from './user-lifts/user-lifts.component';
 import { UserLiftsGraphComponent } from './user-lifts-graph/user-lifts-graph.component'
+import { UserLiftAddComponent } from './user-lift-add/user-lift-add.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]},
   { path: 'liftgraph', 
   component: UserLiftsGraphComponent,
+  canActivate: [AuthGuard]},
+  { path: 'addlift', 
+  component: UserLiftAddComponent,
   canActivate: [AuthGuard]},
   { path: 'home', redirectTo: 'lifts', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},

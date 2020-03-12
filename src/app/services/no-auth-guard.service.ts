@@ -10,7 +10,6 @@ export class NoAuthGuardService implements CanActivate {
 
   canActivate(): boolean {
     if (!this.authService.isUserLoggedIn()) {
-      alert('You are not authorized to view this page');
       this.router.navigate(['login']);
       return false;
     }

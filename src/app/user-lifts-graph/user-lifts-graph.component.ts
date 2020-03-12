@@ -70,8 +70,7 @@ export class UserLiftsGraphComponent implements OnInit {
   findByUsername(){
     this.userService.findByUsername(this.userName).subscribe(
       (user: User) => (
-        this.userLifts = user.userLifts, 
-        console.log(this.userLifts),
+        this.userLifts = user.userLifts,
         this.user = user,
         this.updateChart()
       ),

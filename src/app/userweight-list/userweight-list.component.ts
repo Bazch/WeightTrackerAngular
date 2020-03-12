@@ -78,7 +78,6 @@ export class UserweightListComponent implements OnInit, OnDestroy{
     this.userService.findByUsername(this.userName).subscribe(
       (user: User) => (
         this.userweights = user.userWeights, 
-        console.log(this.userweights),
         this.sortDataByDate(this.userweights),
         this.user = user,
         this.userWeightValues = user.userWeights.map(u => u.value),

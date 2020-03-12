@@ -26,9 +26,7 @@ export class WeightListComponent{
     {}
 
   onSubmit() {
-    console.log(this.userDate);
     this.userDate.setDate(this.userDate.getDate() +1);
-    console.log(this.userDate);
     var userWeight: UserWeight = new UserWeight(this.userweightValue, this.user, this.userDate)
     this.userWeightService.save(userWeight).subscribe(
       (userWeight: UserWeight) =>{},

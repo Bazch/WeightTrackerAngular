@@ -55,30 +55,4 @@ export class UserLiftsComponent implements OnInit {
     });
   }
 
-  submitLiftDetails(){
-    this.liftDetailsDate.setDate(this.liftDetailsDate.getDate() +1);
-    var userLiftDetails: UserLiftDetails = new UserLiftDetails(this.liftDetailsValue, this.liftDetailsDate, this.liftDetailsReps, this.userLift)
-    
-    this.userLiftDetailsService.save(userLiftDetails).subscribe(
-      (userLiftDetails: UserLiftDetails) =>{},
-        (error: HttpErrorResponse) => alert("Er is een fout opgetreden: " + error.status + " " + error.error + "\n" + "\nMessage:\n" + error.message),
-        () => {window.location.reload()}
-      )
-  }
-  submitLift(){
-    var userLift: UserLift = new UserLift(this.liftTitle, this.user);
-    
-    this.userLiftService.save(userLift).subscribe(
-      (userLift: UserLift) => {},
-      (error: HttpErrorResponse) => alert("Er is een fout opgetreden: " + error.status + " " + error.error + "\n" + "\nMessage:\n" + error.message),
-      () => {window.location.reload()}
-    )
-  }
-  deleteLiftDetails(userLiftDetailsId){
-    this.userLiftDetailsService.delete(userLiftDetailsId).subscribe(
-      (result: any) => window.location.reload(),
-      (error: any) => console.log(error),
-      () => { }
-    )
-  }
 }

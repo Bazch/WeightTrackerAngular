@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.userService.findAll().subscribe(
       (data: User[]) => this.users = data, 
       (error: any) => console.log(error), 
-      () => console.log()
+      () => {}
     )    
   }
   
@@ -33,7 +33,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.userService.delete(userId).subscribe(
       (result: any) => this.ngOnInit(),
       (error: any) => console.log(error),
-      () => { }
+      () => {}
     )
   }
    
