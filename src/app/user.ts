@@ -1,4 +1,5 @@
 import { UserWeight } from './user-weight';
+import { UserLift } from './user-lift';
 
 export class User {
     
@@ -10,6 +11,6 @@ export class User {
     username: string;
     password: string;
     userWeights: UserWeight[];
-
+    userLifts: UserLift[];
     
 }

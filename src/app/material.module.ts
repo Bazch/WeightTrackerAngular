@@ -5,6 +5,8 @@ import { MatDatepickerModule,
         MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   exports: [
     MatDatepickerModule,
@@ -21,7 +25,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [ MatDatepickerModule, MatRadioModule ],
 })

@@ -26,6 +26,11 @@ import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { ExistingUsernameValidator } from './custom-validators/existing-username-validator';
 import { NoAuthGuardService } from './services/no-auth-guard.service';
+import { UserLiftsComponent } from './user-lifts/user-lifts.component';
+import { UserLiftDetailsService } from './services/user-lift-details.service';
+import { UserLiftService } from './services/user-lift.service';
+import { UserLiftsGraphComponent } from './user-lifts-graph/user-lifts-graph.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +45,10 @@ import { NoAuthGuardService } from './services/no-auth-guard.service';
     LogoutComponent,
     HomeComponent,
     ExistingEmailValidator,
-    ExistingUsernameValidator
-    
+    ExistingUsernameValidator,
+    UserLiftsComponent,
+    UserLiftsGraphComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,10 @@ import { NoAuthGuardService } from './services/no-auth-guard.service';
     MDBBootstrapModule.forRoot(),
     NgxExtendedPdfViewerModule
   ],
-  providers: [UserService, UserWeightService, AuthenticationService, BasicAuthInterceptorService, NoAuthGuardService,
+  entryComponents: [
+    ConfirmationDialogComponent
+  ],
+  providers: [UserService, UserWeightService, UserLiftService, UserLiftDetailsService, AuthenticationService, BasicAuthInterceptorService, NoAuthGuardService,
     {provide: HTTP_INTERCEPTORS,
     useClass: BasicAuthInterceptorService,
     multi: true}],

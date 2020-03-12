@@ -1,0 +1,104 @@
+<div class="container-fluid">
+
+    <h1>Latest Lifts</h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Lift</th>                           
+                            <th scope="col">Weight</th>
+                            <th scope="col"># of reps</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let l of listLifts" >                            
+                        <tr  *ngFor="let detail of l.liftDetails; first as isFirst">   
+                            <td *ngIf="isFirst">{{ l.title }}</td>                                                                   
+                            <td *ngIf="isFirst">{{ detail.value }}</td>                             
+                            <td *ngIf="isFirst">{{ detail.reps }}</td>      
+                            <td *ngIf="isFirst">{{ detail.date}} </td>     
+                        </tr>                      
+                        </ng-container>                     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <h1>Enter a new lift</h1>
+            <form class= "w-50"(ngSubmit)="submitLift()" #liftForm="ngForm">      
+                <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" 
+                    [(ngModel)]="liftTitle" 
+                    class="form-control" 
+                    id="title"
+                    name="title"
+                    required 
+                    #value="ngModel">
+                </div>     
+                <button type="submit" [disabled]="!liftForm.form.valid" 
+                    class="btn btn-info">Add</button>
+                </form>
+        </div>
+        <div class="col-sm">
+            <h1>Enter your lift details</h1>  
+            <form class="w-50" (ngSubmit)="submitLiftDetails()" #liftDetailsForm="ngForm">
+
+                <div class = "form-group">    
+                    <label for=lift>Lift</label>
+                <select [(ngModel)]="userLift"
+                        class="form-control" 
+                        id="lift"
+                        name="lift"
+                        required           
+                        #lift="ngModel">>
+                    <option *ngFor="let l of listLifts" [ngValue]="l">{{l.title}}</option>
+                </select>
+                </div>
+            
+            <div class="form-group">
+                <label for="value">Weight (kg)</label>
+                <input type="number" 
+                    [(ngModel)]="liftDetailsValue" 
+                    class="form-control" 
+                    id="value"
+                    name="value"
+                    required 
+                    #value="ngModel">
+                <div *ngIf="value.invalid && (value.dirty || value.touched)" class="alert alert-danger"> How much weight? </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reps"># of reps</label>
+                <input type="number" 
+                    [(ngModel)]="liftDetailsReps" 
+                    class="form-control" 
+                    id="reps"
+                    name="reps"
+                    required 
+                    #reps="ngModel">
+                <div *ngIf="reps.invalid && (reps.dirty || reps.touched)" class="alert alert-danger"> How many reps? </div>
+            </div>
+        
+            <div class="form-group">
+                <mat-form-field id="date">
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="liftDetailsDate"  id="date" name="date" #date>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <button type="submit" [disabled]="!liftDetailsForm.form.valid" 
+                class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>

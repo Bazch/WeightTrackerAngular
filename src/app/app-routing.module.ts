@@ -9,6 +9,8 @@ import { CVComponent } from './cv/cv.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { NoAuthGuardService as AuthGuard} from './services/no-auth-guard.service';
+import { UserLiftsComponent } from './user-lifts/user-lifts.component';
+import { UserLiftsGraphComponent } from './user-lifts-graph/user-lifts-graph.component'
 
 
 const routes: Routes = [
@@ -23,6 +25,10 @@ const routes: Routes = [
   { path: 'weights', 
     component: UserweightListComponent,
     canActivate: [AuthGuard]},
+  { path: 'lifts', 
+    component: UserLiftsComponent,
+    canActivate: [AuthGuard]},
+  { path: 'liftgraph', component: UserLiftsGraphComponent},
   { path: 'login', component: LoginComponent},
   { path: 'cv', component: CVComponent},
   { path: 'logout', component: LogoutComponent},

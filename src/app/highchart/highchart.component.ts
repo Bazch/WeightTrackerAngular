@@ -12,7 +12,7 @@ export class HighchartComponent implements OnInit {
   chartConstructor: string = 'chart'; // optional string, defaults to 'chart'
   chartOptions: Highcharts.Options = {  }; // required
   chartCallback: Highcharts.ChartCallbackFunction = function (chart) {  } // optional function, defaults to null
-  updateFlag: boolean = false; // optional boolean
+  updateFlag: boolean = true; // optional boolean
   oneToOneFlag: boolean = true; // optional boolean, defaults to false
   runOutsideAngular: boolean = false; // optional boolean, defaults to false
   
