@@ -28,11 +28,14 @@ const routes: Routes = [
   { path: 'lifts', 
     component: UserLiftsComponent,
     canActivate: [AuthGuard]},
-  { path: 'liftgraph', component: UserLiftsGraphComponent},
+  { path: 'liftgraph', 
+  component: UserLiftsGraphComponent,
+  canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'cv', component: CVComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'home', component: HomeComponent},
+  { path: '', redirectTo: 'lifts', pathMatch: 'full'}
+
 ];
 
 @NgModule({

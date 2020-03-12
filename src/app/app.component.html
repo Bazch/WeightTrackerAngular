@@ -20,10 +20,19 @@
       
       <li class="nav-item dropdown" dropdown>
         <a *ngIf="isLoggedIn" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Actions<span class="caret"></span></a>
+          Weight<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink='addweight'>Add Weight</a>
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink='weights'>View Progress</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" dropdown>
+        <a *ngIf="isLoggedIn" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Exercises<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink='lifts'>Overview</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink='liftgraph'>View Progress</a>
         </div>
       </li>
 

@@ -31,6 +31,7 @@ import { UserLiftDetailsService } from './services/user-lift-details.service';
 import { UserLiftService } from './services/user-lift.service';
 import { UserLiftsGraphComponent } from './user-lifts-graph/user-lifts-graph.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { UserLiftAddComponent } from './user-lift-add/user-lift-add.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     ExistingUsernameValidator,
     UserLiftsComponent,
     UserLiftsGraphComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    UserLiftAddComponent
   ],
   imports: [
     BrowserModule,
