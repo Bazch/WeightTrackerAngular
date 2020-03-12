@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'liftgraph', 
   component: UserLiftsGraphComponent,
   canActivate: [AuthGuard]},
+  { path: 'home', redirectTo: 'lifts', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'cv', component: CVComponent},
   { path: 'logout', component: LogoutComponent},
