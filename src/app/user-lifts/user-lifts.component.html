@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                         <ng-container *ngFor="let l of listLifts" >                            
-                        <tr  *ngFor="let detail of l.liftDetails; last as isFirst">   
+                        <tr  *ngFor="let detail of l.liftDetails; first as isFirst">   
                             <td *ngIf="isFirst">{{ l.title }}</td>                                                                   
                             <td *ngIf="isFirst">{{ detail.value }}</td>                             
                             <td *ngIf="isFirst">{{ detail.reps }}</td>      
